@@ -1,0 +1,853 @@
+/* PREMIUM DESIGN SYSTEM v2.0
+    Style: Ultra-Futuristic Dark
+    Focus: Typography, Spacing, and Glassmorphism
+*/
+
+/* 1. RESET & CORE VARIABLES */
+:root {
+    /* Color Palette */
+    --primary: #FF5E13;
+    --primary-rgb: 255, 94, 19;
+    --primary-grad: linear-gradient(135deg, #FF5E13 0%, #FF2E00 100%);
+    --bg-dark: #000000;
+    --bg-surface: #0A0A0A;
+    --bg-card: #111111;
+    
+    /* Text Colors */
+    --text-main: #FFFFFF;
+    --text-dim: #86868b;
+    --text-muted: #424245;
+    
+    /* Borders & Glass */
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-heavy: rgba(10, 10, 10, 0.8);
+    
+    /* Animations */
+    --ease-ios: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.5s var(--ease-out);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    outline: none;
+    list-style: none !important; /* BARCHA NUQTALARNI O'CHIRISH */
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. CUSTOM CURSOR ENGINE */
+#cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    z-index: 100000;
+    pointer-events: none;
+    will-change: transform;
+}
+
+#cursor-outline {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid var(--primary);
+    border-radius: 50%;
+    z-index: 99999;
+    pointer-events: none;
+    will-change: transform;
+    transition: width 0.3s var(--ease-ios), height 0.3s var(--ease-ios), background 0.3s;
+}
+
+/* 3. NAVIGATION (APPLE STYLE) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+    height: 80px;
+    background: var(--glass-heavy);
+    backdrop-filter: blur(25px) saturate(180%);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9000;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary);
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+}
+
+.nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    letter-spacing: 0.2px;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.lang-wrapper {
+    background: var(--glass);
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.lang-wrapper:hover {
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+#langSelect {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 4. HERO SECTION (ULTRA-WIDE) */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 12vw, 100px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -5px;
+    margin-bottom: 40px;
+    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.4) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--text-dim);
+    max-width: 750px;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+/* 5. SECTIONS & GRIDS */
+.section-padding {
+    padding: 160px 10%;
+}
+
+.section-header {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* 6. CARD DESIGN (THE MASTERPIECE) */
+.card {
+    background: var(--bg-card);
+    padding: 80px 50px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.7s var(--ease-out);
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    background: #161616;
+    border-color: rgba(var(--primary-rgb), 0.4);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card i {
+    font-size: 50px;
+    color: var(--primary);
+    margin-bottom: 40px;
+    display: block;
+    filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.4));
+}
+
+.card h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.card p {
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* 7. CONTACT FORM (GLASS DESIGN) */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--primary);
+    background: #000;
+}
+
+/* 8. BUTTONS (LUXURY) */
+.btn-main {
+    padding: 22px 55px;
+    background: var(--primary-grad);
+    color: #fff;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(var(--primary-rgb), 0.3);
+    transition: 0.4s var(--ease-out);
+}
+
+.btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px rgba(var(--primary-rgb), 0.5);
+    filter: brightness(1.1);
+}
+
+/* 9. FUTURISTIC CHATBOT */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 70px;
+    height: 70px;
+    background: var(--primary-grad);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: 0.4s;
+}
+
+#chatbot-toggle:hover {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+#chat-window {
+    position: fixed;
+    bottom: 130px;
+    right: 40px;
+    width: 420px;
+    height: 650px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(40px);
+    border: 1px solid var(--border);
+    border-radius: 35px;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 30px;
+    background: var(--glass);
+    border-bottom: 1px solid var(--border);
+    font-weight: 800;
+    font-size: 18px;
+}
+/* 1. ASOSIY SOZLAMALAR (GLOBAL) */
+:root {
+    --primary: #FF5E13;
+    --primary-glow: rgba(255, 94, 19, 0.4);
+    --bg-dark: #000000;
+    --bg-card: #0A0A0A;
+    --text-white: #FFFFFF;
+    --text-dim: #86868b;
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: rgba(15, 15, 15, 0.85);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    list-style: none !important; /* NUQTALARNI O'CHIRISH */
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+/* 2. HERO SECTION (MARKAZLASHTIRISH) */
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Gorizontal markaz */
+    justify-content: center; /* Vertikal markaz */
+    text-align: center; /* Matnni markazlash */
+    padding: 0 10%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 85px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -3px;
+    max-width: 900px; /* Matn kengligi chegaralandi */
+    margin: 0 auto 30px auto; /* O'rtaga olish */
+    background: linear-gradient(180deg, #fff 50%, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto; /* O'rtaga olish */
+    line-height: 1.6;
+}
+
+/* 3. XIZMATLAR GRIDI (NUQTALARSIZ) */
+.section-padding { padding: 100px 8%; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 60px 40px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+/* 4. PREMIUM CHATBOT DIZAYNI */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    width: 65px; height: 65px;
+    background: var(--primary);
+    border-radius: 22px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 28px; cursor: pointer;
+    z-index: 10001;
+    box-shadow: 0 15px 35px var(--primary-glow);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#chatbot-toggle:hover { transform: scale(1.1) rotate(-5deg); }
+
+#chat-window {
+    position: fixed;
+    bottom: 110px; right: 30px;
+    width: 380px; height: 580px;
+    background: var(--glass);
+    backdrop-filter: blur(30px);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    display: none; /* JS buni flex qiladi */
+    flex-direction: column;
+    z-index: 10000;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+/* Chatbot Ichki qismi */
+.chat-header {
+    padding: 25px;
+    background: rgba(255, 94, 19, 0.1);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.chat-header h4 { font-weight: 700; letter-spacing: 0.5px; }
+
+#chat-content {
+    flex: 1; padding: 20px;
+    overflow-y: auto; display: flex; flex-direction: column; gap: 12px;
+}
+
+/* Xabarlar stili */
+.msg {
+    max-width: 80%; padding: 12px 18px;
+    border-radius: 20px; font-size: 14.5px; line-height: 1.5;
+}
+
+.msg.user {
+    align-self: flex-end;
+    background: var(--primary); color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.msg.bot {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.08); color: #efefef;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-footer {
+    padding: 20px; background: rgba(0,0,0,0.2);
+    display: flex; gap: 10px; border-top: 1px solid var(--border);
+}
+
+#chat-input {
+    flex: 1; background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 12px 18px; border-radius: 15px;
+    color: white; outline: none;
+}
+
+#chat-input:focus { border-color: var(--primary); }
+/* SELECT DESIGN - MODERN & CLEAN */
+.lang-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.lang-wrapper:hover {
+    border-color: var(--primary);
+    background: rgba(255, 94, 19, 0.1);
+}
+
+#langSelect {
+    appearance: none; /* Standart ko'rinishni o'chirish */
+    -webkit-appearance: none;
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding-right: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Select o'ng tomonidagi kichik strelka */
+.lang-wrapper::after {
+    content: '▼';
+    font-size: 10px;
+    color: var(--primary);
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+}
+
+/* Optionlar dizayni (Brauzer ruxsat bergan darajada) */
+#langSelect option {
+    background-color: #0a0a0a;
+    color: #fff;
+    padding: 10px;
+}
+
+/* SEND BUTTON MASTER STYLING */
+#chat-send-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 12px; /* Chatbot burchaklariga mos ravishda */
+    background: linear-gradient(135deg, #FF5E13 0%, #FF2E00 100%);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(255, 94, 19, 0.3);
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tugma ustiga borganda */
+#chat-send-btn:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 94, 19, 0.5);
+    filter: brightness(1.1);
+}
+
+/* Tugmani bosganda (Click) */
+#chat-send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Tugma ichidagi ikonka (qog'oz samolyot) harakati */
+#chat-send-btn i {
+    transition: transform 0.3s ease;
+}
+
+#chat-send-btn:hover i {
+    transform: translate(2px, -2px) scale(1.1);
+}
+
+/* Footer qismini tartibga solish (Input bilan tugmani yonma-yon chiroyli qilish) */
+.chat-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#chat-input {
+    flex: 1;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0 15px;
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#chat-input:focus {
+    border-color: #FF5E13;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lang-wrapper i {
+    color: #FF5E13;
+    font-size: 14px;
+}
+
+#langSelect {
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#langSelect option {
+    background: #0A0A0A;
+    color: white;
+}
+
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Orqa fonni xiralashtirish */
+    backdrop-filter: blur(8px);
+    display: none; /* Odatiy holatda yopiq */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.alert-box {
+    background: #111;
+    border: 1px solid rgba(255, 94, 19, 0.3);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 94, 19, 0.1);
+}
+
+.alert-overlay.active {
+    display: flex;
+}
+
+.alert-overlay.active .alert-box {
+    transform: translateY(0);
+}
+
+.alert-icon {
+    font-size: 50px;
+    color: #FF5E13;
+    margin-bottom: 20px;
+}
+
+.alert-box h2 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.alert-box p {
+    color: #aaa;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+#profileModal {
+    background: #1a1a1a !important; /* Qora fon saytingiz uslubida */
+    color: white;
+    border: 1px solid #ff6600;
+    width: 90%;
+    max-width: 400px;
+}
+
+#profileModal input {
+    background: #333;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.nav-btn:hover {
+    background: #e65c00 !important;
+    transition: 0.3s;
+}
+/* PROFILE MODAL DESIGN */
+#profileModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: #111;
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    padding: 30px;
+    z-index: 10001;
+    display: none;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
+}
+
+#profileModal h3 { margin-bottom: 20px; color: #fff; text-align: center; }
+
+#profileModal .field { margin-bottom: 15px; }
+
+#profileModal label { display: block; color: #888; font-size: 12px; margin-bottom: 5px; }
+
+#profileModal input {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+}
+
+#profileModal input:disabled { background: #181818; color: #555; }
+
+.modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+
+.modal-btns button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-save { background: var(--primary); color: #fff; }
+.btn-close { background: #333; color: #fff; }
+/* 5. MOSLASHUVCHANLIK (RESPONSIVE) */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 42px; letter-spacing: -1.5px; }
+    
+    .section-padding { padding: 80px 5%; }
+    
+    #chat-window {
+        width: calc(100% - 30px);
+        left: 15px; right: 15px;
+        bottom: 100px; height: 60vh;
+    }
+
+    #chatbot-toggle { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+}
+
+/* Ortiqcha elementlarni butunlay tozalash */
+ul, li, ol { list-style: none !important; }
+/* 10. MOBILE OPTIMIZATION (THE FINAL FIX) */
+@media (max-width: 1024px) {
+    #cursor-dot, #cursor-outline { display: none !important; }
+}
+
+@media (max-width: 768px) {
+    nav { padding: 0 20px; height: 70px; }
+    .nav-links { display: none !important; }
+    
+    .hero h1 { font-size: 50px; letter-spacing: -2px; }
+    .hero p { font-size: 18px; }
+    
+    .section-padding { padding: 100px 20px; }
+    
+    .grid { grid-template-columns: 1fr; }
+    
+    .contact-container { grid-template-columns: 1fr; gap: 50px; }
+    
+    #chat-window {
+        width: calc(100% - 30px);
+        left: 15px;
+        right: 15px;
+        bottom: 120px;
+        height: 70vh;
+    }
+}
+
+/* 11. EXTRA REFINEMENTS (NUQTALARNI BUTUNLAY YO'QOTISH) */
+ul, li, ol, .nav-links, .grid {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+::selection {
+    background: var(--primary);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+

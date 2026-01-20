@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apelsin Space — Digital Solutions</title>
+    
+    <meta name="description" content="Apelsin Space — Toshkentda sifatli veb-saytlar, botlar va raqamli marketing xizmatlari.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Skrinshottdagi buzilishlarni oldini olish uchun qo'shimcha CSS */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            text-align: center;
+        }
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px 0;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-outline"></div>
+
+<nav>
+    <a href="#" class="logo">APELSIN<span>.SPACE</span></a>
+    <div class="nav-right" style="display: flex; align-items: center; gap: 20px;">
+        <ul class="nav-links" id="menu">
+            <li><a href="#services" data-key="nav_1">Xizmatlar</a></li>
+            <li><a href="#contact" data-key="nav_3">Aloqa</a></li>
+        </ul>
+
+        <div id="auth-section" style="display: flex; align-items: center; gap: 15px;">
+            <div id="guest-links">
+                <a href="./sign.html" class="nav-btn" style="text-decoration: none; color: white; background: #ff6600; padding: 5px 15px; border-radius: 5px;">Kirish</a>
+            </div>
+            <div id="user-profile" style="display: none; align-items: center; gap: 10px;">
+                <span id="welcome-msg" style="color: #333; font-weight: bold;"></span>
+                <button onclick="toggleProfileModal()" style="cursor:pointer; background:none; border: 1px solid #ff6600; padding: 5px 10px; border-radius: 5px;color: #a19f9f;">Profil</button>
+                <a href="/api/logout" style="color: rgb(148, 145, 145); font-size: 14px;">Chiqish</a>
+            </div>
+        </div>
+
+        <div class="lang-wrapper">
+            <i class="fas fa-globe"></i>
+            <select id="langSelect">
+                <option value="uz">UZB</option>
+                <option value="en">ENG</option>
+            </select>
+        </div>
+    </div>
+</nav>
+
+<div id="profileModal">
+    <h3>Profilni tahrirlash</h3>
+    
+    <div class="field">
+        <label>To'liq ism</label>
+        <input type="text" id="edit-fullname" placeholder="Ismingizni kiriting">
+    </div>
+
+    <div class="field">
+        <label>Email manzili</label>
+        <input type="email" id="edit-username" placeholder="Yangi email">
+    </div>
+
+    <div class="field">
+        <label>Yangi parol (O'zgartirmaslik uchun bo'sh qoldiring)</label>
+        <input type="password" id="edit-password" placeholder="********">
+    </div>
+
+    <div class="modal-btns">
+        <button class="btn-save" onclick="saveProfileChanges()">O'zgarishlarni saqlash</button>
+        <button class="btn-close" onclick="toggleProfileModal()">Bekor qilish</button>
+    </div>
+</div>
+<section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <h1 data-key="h_title">Sizning G'oyangiz — Bizning Yechimimiz</h1>
+        <p data-key="h_sub">Apelsin SPACE professional veb-dizayn, onlayn do'konlar va gaming loyihalaringizni hayotga tatbiq etadi.</p>
+        <div style="margin-top: 30px;">
+            <a href="#contact" class="btn-main" data-key="h_btn">Xizmalarni Ko'rish</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="services">
+    <h2 style="text-align: center; margin-bottom: 50px; font-size: 32px;" data-key="nav_1">Xizmatlar</h2>
+    <div class="grid">
+        <div class="card" data-aos="fade-up">
+            <i class="fas fa-laptop-code"></i>
+            <h3 data-key="s1_t">Veb Studio</h3>
+            <p data-key="s1_d">Eng zamonaviy texnologiyalar asosida veb-saytlar va murakkab tizimlar ishlab chiqamiz.</p>
+        </div>
+        
+        <a href="https://xabibullayevazizjo.wixsite.com/my-site-2" style="text-decoration: none; color: inherit;">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-shopping-cart"></i>
+                <h3 data-key="s2_t">Online Do'kon</h3>
+                <p data-key="s2_d">Savdolarni avtomatlashtirish va mahsulotlarni onlayn sotish uchun mukammal tizimlar.</p>
+            </div>
+        </a>
+        
+        <a href="https://xabibullayevazizjo.wixsite.com/my-site-1" style="text-decoration: none; color: inherit;">
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-gamepad"></i>
+                <h3 data-key="s3_t">GameShop</h3>
+                <p data-key="s3_d">O'yin olamidagi loyihalar, o'yin serverlari va raqamli xizmatlar markazi.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="section-padding" id="contact" style="background: #030303; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="contact-container">
+        <div class="contact-info" data-aos="fade-right">
+            <h2 style="margin-bottom: 25px;" data-key="nav_3">Biz bilan bog'lanish</h2>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <p><i class="fas fa-envelope" style="color:var(--primary); margin-right: 10px;"></i> info@apelsin.space</p>
+                <p><i class="fab fa-telegram" style="color:var(--primary); margin-right: 10px;"></i> @Apelsin_Supportbot</p>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right: 10px;"></i> Toshkent, O'zbekiston</p>
+            </div>
+        </div>
+        
+        <form class="contact-form" data-aos="fade-left">
+            <input type="text" name="Ism" placeholder="Ismingiz" required data-key="p_name">
+            <input type="email" name="Email" placeholder="Emailingiz" required data-key="p_email">
+            <textarea name="Xabar" rows="5" placeholder="Xabaringiz" required data-key="p_msg"></textarea>
+            <button class="btn-main" type="submit">Yuborish</button>
+        </form>
+    </div>
+</section>
+
+<footer style="padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: #555; background: #000;">
+    &copy; 2026 Apelsin Nova. Barcha huquqlar himoyalangan.
+</footer>
+
+<div id="chatbot-toggle" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
+
+<div id="chat-window" style="display:none;">
+    <div class="chat-header">
+        <span><i class="fas fa-bolt"></i> Apelsin AI</span>
+        <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer"></i>
+    </div>
+    <div class="chat-body" id="chat-content">
+        </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Savolingizni yozing..." id="chat-input">
+        <button onclick="sendMessage()" id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/script.js"></script>
+<script>
+    // AOS kutubxonasini ishga tushirish (Elementlarni ko'rinishi uchun shart!)
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+<div id="custom-alert" class="alert-overlay">
+    <div class="alert-box">
+        <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 id="alert-title">Muvaffaqiyatli!</h2>
+        <p id="alert-message">Xabaringiz qabul qilindi. Tez orada bog'lanamiz.</p>
+        <button onclick="closeAlert()" class="btn-main">OK</button>
+    </div>
+</div>
+</body>
+</html>

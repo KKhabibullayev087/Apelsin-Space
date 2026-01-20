@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://apelsin.space/sitemap.xml

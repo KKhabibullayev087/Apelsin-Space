@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth System | Apelsin Space</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/sign.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <i class="fas fa-carrot"></i>
+                <span>APELSIN<span>SPACE</span></span>
+            </div>
+
+            <div class="auth-tabs" id="authTabs">
+                <button id="tab-login" class="active" onclick="switchTab('login')">Kirish</button>
+                <button id="tab-register" onclick="switchTab('register')">Ro'yxatdan o'tish</button>
+            </div>
+
+            <div id="login-section" class="auth-section">
+                <h2>Xush kelibsiz!</h2>
+                <form id="signInForm">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="Email" placeholder="Email manzilingiz" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="Parol" placeholder="Parolingiz" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Eslab qolish</label>
+                        <a href="javascript:void(0)" onclick="showRecoveryStart()">Unutdingizmi?</a>
+                    </div>
+                    <button type="submit" class="login-btn">Kirish</button>
+                </form>
+            </div>
+
+            <div id="register-section" class="auth-section" style="display: none;">
+                <h2>Hisob ochish</h2>
+                <form id="signUpForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="Ism" placeholder="To'liq ismingiz" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="Email" placeholder="Email manzilingiz" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="Parol" placeholder="Parol yarating" required>
+                    </div>
+                    <button type="submit" class="login-btn">Ro'yxatdan o'tish</button>
+                </form>
+            </div>
+
+            <div id="recovery-section" class="auth-section" style="display: none;">
+                <div id="rec-step-1">
+                    <h2>Tiklash turini tanlang</h2>
+                    <button class="login-btn mb-10" onclick="setRecType('login')">Loginni tiklash</button>
+                    <button class="login-btn" onclick="setRecType('password')">Parolni tiklash</button>
+                </div>
+
+                <div id="rec-step-2" style="display: none;">
+                    <h2 id="rec-title">Emailingizni kiriting</h2>
+                    <p>Tasdiqlash kodi yuboriladi</p>
+                    <form onsubmit="sendCode(event)">
+                        <div class="input-group">
+                            <i class="fas fa-at"></i>
+                            <input type="email" id="rec-email" placeholder="example@mail.com" required>
+                        </div>
+                        <button type="submit" class="login-btn">Kodni yuborish</button>
+                    </form>
+                </div>
+
+                <div id="rec-step-3" style="display: none;">
+                    <h2>Kodni kiriting</h2>
+                    <p>Telegram botga yuborilgan 4 xonali kod</p>
+                    <form onsubmit="verifyCode(event)">
+                        <div class="input-group">
+                            <i class="fas fa-key"></i>
+                            <input type="text" id="rec-code" placeholder="0000" maxlength="4" required>
+                        </div>
+                        <button type="submit" class="login-btn">Tasdiqlash</button>
+                    </form>
+                </div>
+
+                <div id="rec-step-4" style="display: none;">
+                    <h2 id="final-rec-title">Yangi ma'lumot</h2>
+                    <form onsubmit="finishRecovery(event)">
+                        <div class="input-group">
+                            <i class="fas fa-edit"></i>
+                            <input type="text" id="final-input" placeholder="Kiriting..." required>
+                        </div>
+                        <button type="submit" class="login-btn">Saqlash</button>
+                    </form>
+                </div>
+
+                <div class="register-link"><a href="javascript:void(0)" onclick="location.reload()">Orqaga qaytish</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-alert" class="alert-overlay">
+        <div class="alert-box">
+            <h2 id="alert-title">Xabar</h2>
+            <p id="alert-message"></p>
+            <button onclick="closeAlert()" class="btn-main">OK</button>
+        </div>
+    </div>
+
+    <script src="./sign.js"></script>
+    
+</body>
+</html>
